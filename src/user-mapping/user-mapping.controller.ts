@@ -6,16 +6,18 @@ import {
   ValidationPipe,
   BadRequestException,
 } from '@nestjs/common';
-import { IsString, IsNotEmpty } from 'class-validator';
+import { IsString, IsNotEmpty, MaxLength } from 'class-validator';
 import { UserMappingService } from './user-mapping.service';
 
 class CreateUserMappingDto {
   @IsString()
   @IsNotEmpty()
+  @MaxLength(50, { message: 'id1 must be at most 50 characters long' })
   id1: string;
 
   @IsString()
   @IsNotEmpty()
+  @MaxLength(50, { message: 'id2 must be at most 50 characters long' })
   id2: string;
 }
 

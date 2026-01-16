@@ -12,10 +12,10 @@ export class UserMapping {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 50 })
   id1: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 50 })
   id2: string;
 
   @Column({ type: 'varchar', length: 36 })

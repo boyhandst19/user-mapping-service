@@ -86,8 +86,8 @@ curl -X POST http://localhost:3000/user-mapping \
 ```sql
 CREATE TABLE user_mappings (
   id VARCHAR(36) PRIMARY KEY,
-  id1 VARCHAR(255) NOT NULL,
-  id2 VARCHAR(255) NOT NULL,
+  id1 VARCHAR(50) NOT NULL,
+  id2 VARCHAR(50) NOT NULL,
   userID VARCHAR(36) NOT NULL,
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY unique_id1_id2 (id1, id2)

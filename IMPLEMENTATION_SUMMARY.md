@@ -28,8 +28,8 @@ All requested features have been implemented for the User Mapping Service using 
 ```sql
 CREATE TABLE user_mappings (
   id VARCHAR(36) PRIMARY KEY,          -- UUID primary key
-  id1 VARCHAR(255) NOT NULL,           -- First identifier
-  id2 VARCHAR(255) NOT NULL,           -- Second identifier
+  id1 VARCHAR(50) NOT NULL,           -- First identifier
+  id2 VARCHAR(50) NOT NULL,           -- Second identifier
   userID VARCHAR(36) NOT NULL,         -- User ID (UUIDv4)
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY unique_id1_id2 (id1, id2) -- Ensures no duplicate pairs

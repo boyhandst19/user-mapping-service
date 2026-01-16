@@ -54,8 +54,8 @@ The application uses TypeORM with `synchronize: true`, which means the tables ar
 ```sql
 CREATE TABLE user_mappings (
   id VARCHAR(36) PRIMARY KEY DEFAULT (UUID()),
-  id1 VARCHAR(255) NOT NULL,
-  id2 VARCHAR(255) NOT NULL,
+  id1 VARCHAR(50) NOT NULL,
+  id2 VARCHAR(50) NOT NULL,
   userID VARCHAR(36) NOT NULL,
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY unique_id1_id2 (id1, id2)
@@ -144,8 +144,8 @@ The `UserMapping` entity has the following structure:
 | Column | Type | Description |
 |--------|------|-------------|
 | id | UUID | Primary key (auto-generated) |
-| id1 | VARCHAR(255) | First identifier |
-| id2 | VARCHAR(255) | Second identifier |
+| id1 | VARCHAR(50) | First identifier |
+| id2 | VARCHAR(50) | Second identifier |
 | userID | VARCHAR(36) | Generated or stored user ID |
 | createdAt | TIMESTAMP | Creation timestamp |
 
