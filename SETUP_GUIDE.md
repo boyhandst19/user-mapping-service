@@ -7,7 +7,7 @@ The User Mapping Service has been successfully implemented with all the requeste
 ## What Was Implemented
 
 ### 1. API Endpoint
-- **Endpoint**: `POST /user-mapping`
+- **Endpoint**: `POST /api/user-mapping`
 - **Parameters**: JSON body with `id1` and `id2`
 - **Response**: JSON object with `userID` (UUIDv4)
 
@@ -117,15 +117,16 @@ The service will start on `http://localhost:3000`
 ## Testing the Endpoint
 
 ### Using cURL
+
 ```bash
-curl -X POST http://localhost:3000/user-mapping \
+curl -X POST http://localhost:3000/api/user-mapping \
   -H "Content-Type: application/json" \
   -d '{"id1": "user_123", "id2": "email_456"}'
 ```
 
 ### Using Postman
 1. Create a new POST request
-2. URL: `http://localhost:3000/user-mapping`
+2. URL: `http://localhost:3000/api/user-mapping`
 3. Body (JSON):
 ```json
 {

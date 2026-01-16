@@ -48,8 +48,9 @@ Application will start on `http://localhost:3000`
 ## Test the API
 
 ### Terminal Command
+
 ```bash
-curl -X POST http://localhost:3000/user-mapping \
+curl -X POST http://localhost:3000/api/user-mapping \
   -H "Content-Type: application/json" \
   -d '{"id1": "test1", "id2": "test2"}'
 ```
@@ -79,7 +80,7 @@ curl -X POST http://localhost:3000/user-mapping \
 
 ## Key Endpoints
 
-- **POST** `/user-mapping` - Create or get user ID mapping
+- **POST** `/api/user-mapping` - Create or get user ID mapping
 
 ## Database Schema
 

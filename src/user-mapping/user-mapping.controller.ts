@@ -21,7 +21,7 @@ class CreateUserMappingDto {
   id2: string;
 }
 
-@Controller('user-mapping')
+@Controller('api/user-mapping')
 export class UserMappingController {
   constructor(private readonly userMappingService: UserMappingService) {}
 

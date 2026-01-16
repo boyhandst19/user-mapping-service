@@ -8,7 +8,7 @@ All requested features have been implemented for the User Mapping Service using 
 
 ## What Was Built
 
-### 1. API Endpoint - POST `/user-mapping`
+-### 1. API Endpoint - POST `/api/user-mapping`
 - **Accept Parameters**: `id1` and `id2` (both string)
 - **Request Format**:
 ```json
@@ -129,9 +129,10 @@ npm run start:prod
 ## Testing the API
 
 ### Using cURL
+
 ```bash
 # First request - creates new mapping
-curl -X POST http://localhost:3000/user-mapping \
+curl -X POST http://localhost:3000/api/user-mapping \
   -H "Content-Type: application/json" \
   -d '{"id1": "user_123", "id2": "email_456"}'
 
@@ -139,7 +140,7 @@ curl -X POST http://localhost:3000/user-mapping \
 # {"userID": "550e8400-e29b-41d4-a716-446655440000"}
 
 # Second request - same IDs, returns existing userID
-curl -X POST http://localhost:3000/user-mapping \
+curl -X POST http://localhost:3000/api/user-mapping \
   -H "Content-Type: application/json" \
   -d '{"id1": "user_123", "id2": "email_456"}'
 
@@ -148,7 +149,7 @@ curl -X POST http://localhost:3000/user-mapping \
 ```
 
 ### Using Postman
-1. Create POST request to `http://localhost:3000/user-mapping`
+1. Create POST request to `http://localhost:3000/api/user-mapping`
 2. Set Headers: `Content-Type: application/json`
 3. Set Body (JSON):
 ```json
@@ -194,7 +195,7 @@ SELECT * FROM user_mappings;
   - Generates new UUIDv4 and inserts if not found
 
 ### UserMappingController
-- Handles HTTP POST requests to `/user-mapping`
+- Handles HTTP POST requests to `/api/user-mapping`
 - Validates incoming request body
 - Calls service to process the request
 - Returns response in JSON format

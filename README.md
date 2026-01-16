@@ -101,7 +101,8 @@ Environment variables are set automatically for containers. For local developmen
 
 ## API Endpoints
 
-### POST `/user-mapping`
+
+### POST `/api/user-mapping`
 
 Maps two identifiers to a user ID. If the mapping already exists, returns the existing user ID. Otherwise, creates a new mapping with a generated UUID.
 
@@ -122,7 +123,7 @@ Maps two identifiers to a user ID. If the mapping already exists, returns the ex
 
 **Example Request:**
 ```bash
-curl -X POST http://localhost:3000/user-mapping \
+curl -X POST http://localhost:3000/api/user-mapping \
   -H "Content-Type: application/json" \
   -d '{"id1": "user_123", "id2": "email_456"}'
 ```
