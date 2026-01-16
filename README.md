@@ -130,14 +130,16 @@ curl -X POST http://localhost:3000/api/user-mapping \
 
 ## How It Works
 
-1. **Request Received**: The endpoint receives a POST request with `id1` and `id2`
-2. **Database Check**: The service queries the database to check if a mapping for these IDs already exists
-3. **Response**:
-   - **If Found**: Returns the existing `userID`
-   - **If Not Found**: 
-     - Generates a new UUIDv4
-     - Inserts the new mapping into the database
-     - Returns the newly generated `userID`
+1. **Request Received**: The endpoint receives a POST request with `id1` and `id2`.
+2. **Redis Cache Check**: The service first checks Redis (via `RedisCacheService`) for an existing mapping for these IDs.
+  - **If Found in Cache**: Returns the cached `userID` immediately.
+3. **Database Check**: If not found in cache, the service queries the database for a mapping.
+  - **If Found in DB**: Caches the result in Redis and returns the `userID`.
+  - **If Not Found**: 
+    - Generates a new UUIDv4
+    - Inserts the new mapping into the database
+    - Caches the new mapping in Redis
+    - Returns the newly generated `userID`
 
 ## Project Structure
 
@@ -149,9 +151,10 @@ src/
 │   ├── user-mapping.controller.ts   # API endpoints
 │   ├── user-mapping.entity.ts       # Database entity
 │   ├── user-mapping.service.ts      # Business logic
-│   └── user-mapping.module.ts       # Module definition
+│   ├── user-mapping.module.ts       # Module definition
+│   ├── redis.cache.ts               # Redis cache logic
 ├── utils/
-│   └── uuid.util.ts              # UUID generation utility
+│   └── uuid.util.ts                 # UUID generation utility
 ├── app.controller.ts
 ├── app.module.ts
 ├── app.service.ts
@@ -218,7 +221,7 @@ npm run format
 
 ## Future Enhancements
 
-- Add Redis caching for frequently accessed mappings
+
 - Implement pagination for bulk operations
 - Add authentication/authorization
 - Create reverse mapping endpoints
