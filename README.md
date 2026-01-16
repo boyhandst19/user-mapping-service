@@ -79,6 +79,26 @@ npm run build
 npm run start:prod
 ```
 
+## Running with Docker Compose
+
+You can run the entire stack (API, MySQL, Redis) using Docker Compose:
+
+```bash
+docker-compose up --build
+```
+
+- The API will be available at `http://localhost:3000`
+- MySQL will run on port `3306` (user: root, password: rootpassword)
+- Redis will run on port `6379`
+
+To stop all services:
+
+```bash
+docker-compose down
+```
+
+Environment variables are set automatically for containers. For local development, ensure your `.env` matches the values in [docker-compose.yml](docker-compose.yml).
+
 ## API Endpoints
 
 ### POST `/user-mapping`

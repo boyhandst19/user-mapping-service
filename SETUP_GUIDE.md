@@ -56,27 +56,16 @@ user-mapping-service/
 
 ## Setup Instructions
 
-### 1. Prerequisites
-- Node.js 18+
-- MySQL 8+
-- npm or yarn
-- Docker & Docker Compose (optional, recommended)
+### Prerequisites
+- Docker & Docker Compose
 
-### 2. Clone & Install
+### Clone the Repository
 ```bash
 git clone <repo-url>
 cd user-mapping-service
-npm install
 ```
 
-### 3. Database Setup
-#### a) Manual (Local MySQL)
-Create the database:
-```sql
-CREATE DATABASE user_mapping_db;
-```
-
-#### b) With Docker Compose (Recommended)
+### Start All Services with Docker Compose
 Run the following to start MySQL, Redis, and the API:
 ```bash
 docker-compose up --build
@@ -86,32 +75,15 @@ This will start:
 - MySQL on port 3306 (user: root, password: rootpassword)
 - Redis on port 6379
 
-### 4. Configure Environment
-Update the `.env` file with your credentials (see example below):
-```env
-DATABASE_HOST=localhost
-DATABASE_PORT=3306
-DATABASE_USER=root
-DATABASE_PASSWORD=your_password
-DATABASE_NAME=user_mapping_db
-REDIS_HOST=localhost
-REDIS_PORT=6379
-PORT=3000
-```
-If using Docker Compose, these are set automatically for containers.
+### Environment Variables
+Environment variables are set automatically for containers. For local development, ensure your `.env` matches the values in [docker-compose.yml](docker-compose.yml).
 
-### 5. Build & Run (Local)
-**Development:**
+### Stopping Services
+To stop all services:
 ```bash
-npm run start:dev
-```
-**Production:**
-```bash
-npm run build
-npm run start:prod
+docker-compose down
 ```
 
----
 
 ## Running Tests
 
@@ -126,7 +98,6 @@ npm run test:e2e
 ```
 E2E tests are located in the `test/` directory and use Jest + Supertest.
 
----
 
 ## Running with Docker
 
@@ -140,7 +111,6 @@ E2E tests are located in the `test/` directory and use Jest + Supertest.
   docker-compose down
   ```
 
----
 
 The service will start on `http://localhost:3000`
 
